@@ -85,7 +85,8 @@ export default function Home() {
                     <h4 className="font-semibold mb-2">Dependencies</h4>
                     <ul className="list-disc list-inside text-sm">
                       {nodeDetails.dependencies.map((dep, index) => (
-                        <li key={index}>{dep}</li>
+                        // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
+<li key={index}>{dep}</li>
                       ))}
                     </ul>
                   </div>
