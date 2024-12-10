@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+
 import { useState } from 'react'
 import type { Alert } from '@/data/alertsData'
 import { serviceDetails } from '@/data/serviceMapData'
@@ -9,7 +9,7 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible"
-import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { ServiceDetails } from './ServiceDetails'
 import { ChevronDown, ChevronUp, X } from 'lucide-react'
 
@@ -32,7 +32,7 @@ export function AlertItem({ alert, onClose }: AlertItemProps) {
         <div className="flex items-center space-x-2">
           <Badge variant={
             alert.type === 'error' ? 'destructive' :
-            alert.type === 'warning' ? 'warning' : 'default'
+            alert.type === 'warning' ? 'secondary' : 'default'
           }>
             {alert.type}
           </Badge>
