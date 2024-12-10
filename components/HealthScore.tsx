@@ -13,7 +13,7 @@ export function HealthScore({ score }: HealthScoreProps) {
         <div 
           className={cn(
             "h-2.5 rounded-full",
-            score > 90 ? "bg-green-600" :
+            score > 90 ? "bg-green-700" :
             score > 70 ? "bg-yellow-400" :
             "bg-red-600"
           )}

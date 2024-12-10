@@ -11,7 +11,7 @@ import { HealthScore } from "@/components/HealthScore";
 import { useState } from "react";
 import Navigation from "@/components/navigation";
 
-export default function Home() {
+export default function Dashboard() {
     const [selectedNode, setSelectedNode] = useState<string | null>(null);
     const [isSheetOpen, setIsSheetOpen] = useState(false);
   
@@ -26,7 +26,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col items-center">
       <Navigation />
       <main className="flex-grow container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-6">Service Overview</h1>
+        <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
         <ServiceMap onNodeClick={handleNodeClick} />
         <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
           <SheetContent className="sm:max-w-[540px]">
@@ -86,7 +86,7 @@ export default function Home() {
                     <ul className="list-disc list-inside text-sm">
                       {nodeDetails.dependencies.map((dep, index) => (
                         // biome-ignore lint/suspicious/noArrayIndexKey: <explanation>
-<li key={index}>{dep}</li>
+                        <li key={index}>{dep}</li>
                       ))}
                     </ul>
                   </div>

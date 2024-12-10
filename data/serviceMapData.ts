@@ -21,7 +21,7 @@ interface ServiceDetails {
   name: string;
   type: string;
   description: string;
-  status: 'Operational' | 'Degraded' | 'Down';
+  status: 'Operational' | 'Degraded' | 'Down' | 'Success';
   lastUpdated: string;
   version: string;
   maintainer: string;
@@ -33,7 +33,7 @@ interface ServiceDetails {
   healthScore: number;
 }
 
-const serviceDetails: Record<string, ServiceDetails> = {
+export const serviceDetails: Record<string, ServiceDetails> = {
   '1': {
     id: '1',
     name: 'API Gateway',
