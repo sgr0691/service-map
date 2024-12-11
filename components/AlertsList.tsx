@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'
 
 import { useState } from 'react'
 import { AlertItem } from './AlertItem'
-import { alertsData, Alert } from '../data/alertsData'
+import { alertsData, type Alert } from '@/data/alertsData'
 import { Input } from "@/components/ui/input"
 import {
   DropdownMenu,
@@ -16,11 +15,16 @@ import { Button } from "@/components/ui/button"
 export function AlertsList() {
   const [searchTerm, setSearchTerm] = useState('')
   const [typeFilter, setTypeFilter] = useState<string[]>([])
+  const [alerts, setAlerts] = useState<Alert[]>(alertsData)
 
-  const filteredAlerts = alertsData.filter(alert => 
+  const filteredAlerts = alerts.filter(alert => 
     alert.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (typeFilter.length === 0 || typeFilter.includes(alert.type))
   )
+
+  const handleCloseAlert = (id: string) => {
+    setAlerts(alerts.filter(alert => alert.id !== id))
+  }
 
   return (
     <div className="space-y-4">
@@ -55,7 +59,7 @@ export function AlertsList() {
       </div>
       <div className="space-y-4">
         {filteredAlerts.map((alert) => (
-          <AlertItem key={alert.id} alert={alert} />
+          <AlertItem key={alert.id} alert={alert} onClose={handleCloseAlert} />
         ))}
       </div>
     </div>

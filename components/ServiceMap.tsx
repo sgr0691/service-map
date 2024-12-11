@@ -11,9 +11,10 @@ interface ServiceMapProps {
 }
 
 const customNodeStyles = {
-  Operational: {},
+  Operational: { border: '2px solid #22c55e', boxShadow: '0 0 10px #22c55e' },
   Degraded: { border: '2px solid #fbbf24', boxShadow: '0 0 10px #fbbf24' },
   Down: { border: '2px solid #ef4444', boxShadow: '0 0 10px #ef4444' },
+  Success: { border: '2px solid #22c55e', boxShadow: '0 0 10px #22c55e' }, // Same as Operational
 };
 
 export function ServiceMap({ onNodeClick }: ServiceMapProps) {
@@ -31,7 +32,7 @@ export function ServiceMap({ onNodeClick }: ServiceMapProps) {
       ...node,
       style: {
         ...node.style,
-        ...customNodeStyles[details?.status || 'Operational'],
+        ...(details?.status && customNodeStyles[details.status] || customNodeStyles.Operational),
       },
     };
   });
